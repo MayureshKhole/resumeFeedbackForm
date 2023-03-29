@@ -17,10 +17,14 @@ function Form() {
   const [technoList, setTechnoList] = useState(technologyList);
   const [state, setState] = useState(false);
 
+  function submitHandler(event) {}
+
+  function ratingChanger(event) {}
+
   return (
     <div>
       <React.Fragment>
-        <form>
+        <form onSubmit={submitHandler}>
           <Card
             style={{
               maxWidth: 850,
@@ -103,7 +107,12 @@ function Form() {
                   </Grid>
                 </Grid>
                 <Grid mt="10px" item>
-                  {state && <NestedGrid data={technoList} />}
+                  {state && (
+                    <NestedGrid
+                      technologyList={technoList}
+                      setTechnologyList={setTechnoList}
+                    />
+                  )}
                 </Grid>
               </CardContent>
             </Card>
@@ -125,7 +134,11 @@ function Form() {
                 </Typography>
 
                 <Grid container spacing={1}>
-                  <NestedGrid data={softskillList} isSoftskill={true} />
+                  <NestedGrid
+                    technologyList={softskillList}
+                    isSoftskill={true}
+                    setTechnologyList={setTechnoList}
+                  />
                 </Grid>
               </CardContent>
             </Card>
